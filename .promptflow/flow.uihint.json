@@ -1,0 +1,113 @@
+{
+  "nodes": {
+    "stream": {
+      "variant_0": {
+        "inputs": {},
+        "inputsValue": {}
+      }
+    },
+    "selectChunks": {
+      "variant_0": {
+        "inputs": {},
+        "inputsValue": {}
+      }
+    },
+    "extractSearchIntent": {
+      "variant_0": {
+        "inputs": {},
+        "inputsValue": {}
+      }
+    },
+    "formatGenerateReplyInputs": {
+      "variant_0": {
+        "inputs": {},
+        "inputsValue": {}
+      }
+    },
+    "rewriteIntent": {
+      "variant_0": {
+        "inputs": {},
+        "inputsValue": {}
+      }
+    },
+    "chunkDocuments": {
+      "variant_0": {
+        "inputs": {},
+        "inputsValue": {}
+      }
+    },
+    "generateReply": {
+      "variant_0": {
+        "inputs": {},
+        "inputsValue": {}
+      }
+    },
+    "formatRewriteIntentInputs": {
+      "variant_0": {
+        "inputs": {},
+        "inputsValue": {}
+      }
+    },
+    "querySearchResource": {
+      "variant_0": {
+        "inputs": {
+          "acs_metadata_field": [],
+          "cosmosdb_nosql_connection": [],
+          "cosmosdb_nosql_container_name": [],
+          "cosmosdb_nosql_content_field": [],
+          "cosmosdb_nosql_database_name": [],
+          "cosmosdb_nosql_embedding_field": [],
+          "embedding_model": [],
+          "serverless_embedding_connection": [],
+          "es_content_field": [],
+          "es_embedding_field": [],
+          "es_index_connection": [],
+          "es_index_name": [],
+          "es_metadata_field": [],
+          "mlindex_asset_id": [],
+          "mongodb_collection": [],
+          "mongodb_connection": [],
+          "mongodb_content_field": [],
+          "mongodb_database": [],
+          "mongodb_embedding_field": [],
+          "mongodb_index_name": [],
+          "mongodb_search_index": [],
+          "pinecone_content_field": [],
+          "pinecone_index_connection": [],
+          "pinecone_index_name": [],
+          "pinecone_index_namespace": [],
+          "pinecone_metadata_field": [],
+          "postgres_connection": [],
+          "postgres_content_field": [],
+          "postgres_embedding_field": [],
+          "postgres_search_type": [],
+          "postgres_table_name": [],
+          "qdrant_embedding_field": [],
+          "qdrant_index_connection": [],
+          "qdrant_index_name": [],
+          "weaviate_collection": [],
+          "weaviate_connection": [],
+          "weaviate_content_field": [],
+          "weaviate_embedding_field": [],
+          "query_type": [
+            {
+              "display_value": "Vector",
+              "value": "Vector"
+            }
+          ]
+        },
+        "inputsValue": {
+          "index_type": "Azure AI Search",
+          "acs_index_connection": "ssncsgptdev",
+          "acs_content_field": "content",
+          "acs_embedding_field": "contentVector",
+          "acs_index_name": "ssncsgptdev-vector-index-text-embedding-ada-002-6",
+          "embedding_type": "Azure OpenAI",
+          "aoai_embedding_connection": "ai-aahncsgptdev418784981586_aoai",
+          "embedding_deployment": "text-embedding-ada-002-ncsgpt-dev",
+          "semantic_configuration": "azureml-default"
+        }
+      }
+    }
+  }
+}

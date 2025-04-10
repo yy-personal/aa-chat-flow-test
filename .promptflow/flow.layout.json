@@ -1,0 +1,77 @@
+{
+  "orientation": "Vertical",
+  "nodeLayouts": {
+    "inputs": {
+      "x": 22.5,
+      "y": 62,
+      "index": -1
+    },
+    "outputs": {
+      "x": 22.5,
+      "y": 1162,
+      "index": -1
+    },
+    "formatRewriteIntentInputs": {
+      "x": 78,
+      "y": 172,
+      "height": 75,
+      "index": 0
+    },
+    "rewriteIntent": {
+      "x": 78,
+      "y": 282,
+      "height": 75,
+      "index": 1
+    },
+    "extractSearchIntent": {
+      "x": 78,
+      "y": 392,
+      "height": 75,
+      "index": 2
+    },
+    "querySearchResource": {
+      "x": 23,
+      "y": 502,
+      "height": 75,
+      "index": 3
+    },
+    "chunkDocuments": {
+      "x": 78,
+      "y": 612,
+      "height": 75,
+      "index": 4
+    },
+    "selectChunks": {
+      "x": 78,
+      "y": 722,
+      "height": 75,
+      "index": 5
+    },
+    "formatGenerateReplyInputs": {
+      "x": 22.5,
+      "y": 832,
+      "height": 75,
+      "index": 6
+    },
+    "generateReply": {
+      "x": 22.5,
+      "y": 942,
+      "index": 7
+    },
+    "stream": {
+      "x": 22.5,
+      "y": 1052,
+      "index": 8
+    }
+  },
+  "viewport": {
+    "transformMatrix": [
+      0.36199601668266723,
+      0,
+      0,
+      0.36199601668266723,
+      118.55245153413495,
+      -159.63018306206655
+    ]
+  }
+}
