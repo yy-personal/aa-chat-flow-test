@@ -137,7 +137,6 @@ nodes:
     path: formatReplyInputs.py
   inputs:
     chunks: ${selectChunks.output}
-    content_check_result: ${checkContent.output}
     history: ${inputs.chat_history}
     max_conversation_tokens: 90000
     max_tokens: 100000

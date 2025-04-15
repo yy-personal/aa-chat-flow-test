@@ -1978,7 +1978,9 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "input_type": "default"
+          "input_type": "default",
+          "value": "${checkContent.output}",
+          "id": "4lgzpvg1"
         }
       },
       "source": "safeResponse.py",
@@ -2073,13 +2075,25 @@
       "name": "merge_responses.py",
       "type": "python",
       "inputs": {
+        "content_check_result": {
+          "type": [
+            "object"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default",
+          "value": "${checkContent.output}",
+          "id": "e6g7eqje"
+        },
         "generateReply_output": {
           "type": [
             "string"
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "input_type": "default"
+          "input_type": "default",
+          "value": "${generateReply.output}",
+          "id": "6fr8dub0"
         },
         "safe_response": {
           "type": [
@@ -2087,7 +2101,9 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "input_type": "default"
+          "input_type": "default",
+          "value": "${safeResponse.output}",
+          "id": "o06l9qbn"
         }
       },
       "source": "merge_responses.py",
@@ -2158,8 +2174,8 @@
           "allow_manual_entry": false,
           "is_multi_select": false,
           "input_type": "default",
-          "value": "${generateReply.output}",
-          "id": "mixq0sed"
+          "value": "${merge_responses.output}",
+          "id": "kwjx5g3e"
         }
       },
       "source": "stream.py",
@@ -2255,7 +2271,17 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "value": "${selectChunks.output}"
+          "input_type": "default",
+          "value": "${selectChunks.output}",
+          "id": "3rixevos"
+        },
+        "content_check_result": {
+          "type": [
+            "object"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default"
         },
         "history": {
           "type": [
@@ -2263,7 +2289,9 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "value": "${inputs.chat_history}"
+          "input_type": "default",
+          "value": "${inputs.chat_history}",
+          "id": "9xigi66m"
         },
         "max_conversation_tokens": {
           "type": [
@@ -2271,7 +2299,9 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "value": "2000"
+          "input_type": "default",
+          "value": "90000",
+          "id": "vdbe3d1q"
         },
         "max_tokens": {
           "type": [
@@ -2279,7 +2309,9 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "value": "5000"
+          "input_type": "default",
+          "value": "100000",
+          "id": "hx8q5cit"
         },
         "query": {
           "type": [
@@ -2287,12 +2319,16 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "value": "${inputs.query}"
+          "input_type": "default",
+          "value": "${inputs.query}",
+          "id": "t8qhkk2m"
         }
       },
       "source": "formatReplyInputs.py",
       "function": "format_generate_reply_inputs",
       "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
       "toolId": "formatReplyInputs.py"
     },
     "ragcore/prompt_templates/generateReply.jinja2": {
