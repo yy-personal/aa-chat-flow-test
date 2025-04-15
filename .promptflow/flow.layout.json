@@ -2,74 +2,92 @@
   "orientation": "Vertical",
   "nodeLayouts": {
     "inputs": {
-      "x": 177,
+      "x": 639.5,
       "y": 62,
       "index": -1
     },
     "outputs": {
-      "x": 177.5,
-      "y": 1162,
+      "x": 126,
+      "y": 1272,
       "index": -1
     },
     "formatRewriteIntentInputs": {
-      "x": 12,
+      "x": 586,
       "y": 172,
       "height": 75,
       "index": 0
     },
     "rewriteIntent": {
-      "x": 12,
+      "x": 586,
       "y": 282,
       "height": 75,
       "index": 1
     },
     "extractSearchIntent": {
-      "x": 67,
+      "x": 641,
       "y": 392,
       "height": 75,
       "index": 2
     },
-    "querySearchResource": {
-      "x": 122.5,
-      "y": 502,
+    "checkContent": {
+      "x": 291,
+      "y": 392,
       "height": 75,
       "index": 3
     },
-    "chunkDocuments": {
-      "x": 67,
+    "safeResponse": {
+      "x": 12,
       "y": 612,
       "height": 75,
       "index": 4
     },
-    "selectChunks": {
-      "x": 67,
-      "y": 722,
+    "querySearchResource": {
+      "x": 580.5,
+      "y": 502,
       "height": 75,
       "index": 5
     },
-    "formatGenerateReplyInputs": {
-      "x": 122,
-      "y": 832,
+    "chunkDocuments": {
+      "x": 575,
+      "y": 612,
       "height": 75,
       "index": 6
     },
-    "shouldGenerateReply": {
-      "x": 343.5,
-      "y": 282,
+    "selectChunks": {
+      "x": 458.5,
+      "y": 722,
       "height": 75,
       "index": 7
     },
-    "generateReply": {
-      "x": 177.5,
-      "y": 942,
+    "formatGenerateReplyInputs": {
+      "x": 580,
+      "y": 832,
       "height": 75,
       "index": 8
     },
-    "stream": {
-      "x": 177.5,
-      "y": 1052,
+    "shouldGenerateReply": {
+      "x": 233.5,
+      "y": 502,
       "height": 75,
       "index": 9
+    },
+    "generateReply": {
+      "x": 292,
+      "y": 942,
+      "height": 75,
+      "index": 10
+    },
+    "merge_responses": {
+      "x": 126,
+      "y": 1052,
+      "height": 75,
+      "index": 11
+    },
+    "stream": {
+      "x": 126,
+      "y": 1162,
+      "height": 75,
+      "index": 12
     }
   },
   "viewport": {
@@ -78,8 +96,8 @@
       0,
       0,
       0.36199601668266723,
-      54.91814994026976,
-      56.008944422817535
+      64.4213573970834,
+      -116.37510139243034
     ]
   }
 }

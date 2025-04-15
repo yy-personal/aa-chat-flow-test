@@ -1948,6 +1948,46 @@
     }
   },
   "code": {
+    "checkContent.py": {
+      "name": "checkContent.py",
+      "type": "python",
+      "inputs": {
+        "query": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default"
+        }
+      },
+      "source": "checkContent.py",
+      "function": "check_content",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "checkContent.py"
+    },
+    "safeResponse.py": {
+      "name": "safeResponse.py",
+      "type": "python",
+      "inputs": {
+        "content_check_result": {
+          "type": [
+            "object"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default"
+        }
+      },
+      "source": "safeResponse.py",
+      "function": "safe_response",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "safeResponse.py"
+    },
     "ragcore/prompt_templates/rewriteIntent.jinja2": {
       "name": "ragcore/prompt_templates/rewriteIntent.jinja2",
       "type": "prompt",
@@ -2028,6 +2068,34 @@
       "enable_kwargs": false,
       "tool_state": "stable",
       "toolId": "chunkDocuments.py"
+    },
+    "merge_responses.py": {
+      "name": "merge_responses.py",
+      "type": "python",
+      "inputs": {
+        "generateReply_output": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default"
+        },
+        "safe_response": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default"
+        }
+      },
+      "source": "merge_responses.py",
+      "function": "merge_responses",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "merge_responses.py"
     },
     "extractSearchIntent.py": {
       "name": "extractSearchIntent.py",

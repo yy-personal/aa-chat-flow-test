@@ -53,25 +53,6 @@ nodes:
     intent: ${rewriteIntent.output}
     query: ${inputs.query}
   use_variants: false
-- name: checkContent
-  type: python
-  source:
-    type: code
-    path: checkContent.py
-  inputs:
-    query: ${inputs.query}
-  use_variants: false
-- name: safeResponse
-  type: python
-  source:
-    type: code
-    path: safeResponse.py
-  inputs:
-    content_check_result: ${checkContent.output}
-  activate:
-    when: ${checkContent.output.is_safe}
-    is: true
-  use_variants: false
 - name: querySearchResource
   type: python
   source:
@@ -109,9 +90,6 @@ nodes:
     queries: ${extractSearchIntent.output}
     query_type: Hybrid (vector + keyword)
     top_k: 15
-  activate:
-    when: ${checkContent.output.is_safe}
-    is: true
   use_variants: false
 - name: chunkDocuments
   type: python
@@ -125,9 +103,6 @@ nodes:
     query_type: Hybrid (vector + keyword)
     results: ${querySearchResource.output}
     top_k: 15
-  activate:
-    when: ${checkContent.output.is_safe}
-    is: true
   use_variants: false
 - name: selectChunks
   type: python
@@ -138,9 +113,6 @@ nodes:
     min_score: 0.4
     results: ${chunkDocuments.output}
     top_k: 15
-  activate:
-    when: ${checkContent.output.is_safe}
-    is: true
   use_variants: false
 - name: formatGenerateReplyInputs
   type: python
@@ -153,9 +125,6 @@ nodes:
     max_conversation_tokens: 90000
     max_tokens: 100000
     query: ${inputs.query}
-  activate:
-    when: ${checkContent.output.is_safe}
-    is: true
   use_variants: false
 - name: shouldGenerateReply
   type: python
@@ -164,9 +133,6 @@ nodes:
     path: shouldGenerateReply.py
   inputs:
     query: ${inputs.query}
-  activate:
-    when: ${checkContent.output.is_safe}
-    is: true
   use_variants: false
 - name: generateReply
   type: llm
@@ -204,18 +170,6 @@ nodes:
   connection: ai-aahncsgptdev418784981586_aoai
   api: chat
   module: promptflow.tools.aoai
-  activate:
-    when: ${checkContent.output.is_safe}
-    is: true
-  use_variants: false
-- name: merge_responses
-  type: python
-  source:
-    type: code
-    path: merge_responses.py
-  inputs:
-    generateReply_output: ${generateReply.output}
-    safe_response: ${safeResponse.output}
   use_variants: false
 - name: stream
   type: python
@@ -223,7 +177,7 @@ nodes:
     type: code
     path: stream.py
   inputs:
-    paragraph: ${merge_responses.output}
+    paragraph: ${generateReply.output}
   use_variants: false
 node_variants: {}
 environment:

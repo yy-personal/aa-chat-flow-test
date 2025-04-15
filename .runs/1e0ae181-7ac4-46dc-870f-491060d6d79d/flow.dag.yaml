@@ -208,22 +208,13 @@ nodes:
     when: ${checkContent.output.is_safe}
     is: true
   use_variants: false
-- name: merge_responses
-  type: python
-  source:
-    type: code
-    path: merge_responses.py
-  inputs:
-    generateReply_output: ${generateReply.output}
-    safe_response: ${safeResponse.output}
-  use_variants: false
 - name: stream
   type: python
   source:
     type: code
     path: stream.py
   inputs:
-    paragraph: ${merge_responses.output}
+    paragraph: ${generateReply.output ?? safe_response.output}
   use_variants: false
 node_variants: {}
 environment:
