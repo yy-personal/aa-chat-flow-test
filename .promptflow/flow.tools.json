@@ -1960,7 +1960,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${formatRewriteIntentInputs.output}",
-          "id": "nic8wsmj"
+          "id": "m4c99l1f"
         }
       },
       "source": "ragcore/prompt_templates/rewriteIntent.jinja2",
@@ -2039,13 +2039,45 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "value": "${rewriteIntent.output}"
+          "input_type": "default",
+          "value": "${rewriteIntent.output}",
+          "id": "v8k3ulyz"
+        },
+        "query": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default"
         }
       },
       "source": "extractSearchIntent.py",
       "function": "extract_search_intent",
       "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
       "toolId": "extractSearchIntent.py"
+    },
+    "shouldGenerateReply.py": {
+      "name": "shouldGenerateReply.py",
+      "type": "python",
+      "inputs": {
+        "query": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default"
+        }
+      },
+      "source": "shouldGenerateReply.py",
+      "function": "should_use_citation_mode",
+      "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
+      "toolId": "shouldGenerateReply.py"
     },
     "stream.py": {
       "name": "stream.py",
@@ -2059,7 +2091,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${generateReply.output}",
-          "id": "05uieyee"
+          "id": "mixq0sed"
         }
       },
       "source": "stream.py",
@@ -2207,7 +2239,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "True",
-          "id": "cmekh441"
+          "id": "thhfo979"
         },
         "inputs": {
           "type": [
@@ -2217,7 +2249,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${formatGenerateReplyInputs.output}",
-          "id": "fmfsdj2d"
+          "id": "c68lru6z"
         },
         "role_info": {
           "type": [
@@ -2227,7 +2259,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "You are NCSGPT, belonging to NCS Pte. Ltd. (also known as NCS Group, previously known as National Computer Systems), a multinational information technology company headquartered in Singapore. You are a helpful chatbot for NCS employees, designed to provide comprehensive, detailed, and actionable information. All criteria requested by users should be fulfilled in your first response with thorough explanations.\n\nDisambiguation of \"NCS\":\n* Whenever the term \"NCS\" is used, it MUST be understood to refer to NCS Singapore (NCS Pte. Ltd.), unless explicitly stated otherwise in the user's prompt. If a user asks about \"NCS\" without specifying a location, assume they are referring to NCS Singapore. Clarify with the user if there is any ambiguity. For example, you can ask \"Are you referring to NCS Singapore?\".\n\nFor the information provided in documents within the knowledgebase other than the user guide, refer the citations to 'https://www.ncs.co/en-sg/' as all the information are retrieved from the website.\n\nIf you decided that the user's query is not related to the information provided, do not refer to 'https://www.ncs.co/en-sg/'.\n",
-          "id": "p9ki1g2e"
+          "id": "4opaqyc0"
         }
       },
       "source": "ragcore/prompt_templates/generateReply.jinja2",

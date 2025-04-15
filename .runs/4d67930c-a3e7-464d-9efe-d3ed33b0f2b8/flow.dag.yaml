@@ -1,0 +1,184 @@
+id: template_chat_flow
+name: Template Chat Flow
+inputs:
+  chat_history:
+    type: list
+    default: []
+    is_chat_input: false
+    is_chat_history: true
+  query:
+    type: string
+    default: ""
+    is_chat_input: true
+outputs:
+  reply:
+    type: string
+    reference: ${stream.output}
+    is_chat_output: true
+nodes:
+- name: formatRewriteIntentInputs
+  type: python
+  source:
+    type: code
+    path: formatConversationForIntentRewriting.py
+  inputs:
+    history: ${inputs.chat_history}
+    max_tokens: 100000
+    query: ${inputs.query}
+  use_variants: false
+- name: rewriteIntent
+  type: llm
+  source:
+    type: code
+    path: ragcore/prompt_templates/rewriteIntent.jinja2
+  inputs:
+    deployment_name: gpt-4o-ncsgpt-dev
+    temperature: 0.2
+    top_p: 0.8
+    max_tokens: 4096
+    presence_penalty: 0
+    frequency_penalty: 0
+    conversation: ${formatRewriteIntentInputs.output}
+  provider: AzureOpenAI
+  connection: ai-aahncsgptdev418784981586_aoai
+  api: chat
+  module: promptflow.tools.aoai
+  use_variants: false
+- name: extractSearchIntent
+  type: python
+  source:
+    type: code
+    path: extractSearchIntent.py
+  inputs:
+    intent: ${rewriteIntent.output}
+    query: ${inputs.query}
+  use_variants: false
+- name: querySearchResource
+  type: python
+  source:
+    type: package
+    tool: promptflow_vectordb.tool.common_index_lookup.search
+  inputs:
+    mlindex_content: >
+      embeddings:
+        api_base: https://ai-aahncsgptdev418784981586.openai.azure.com/
+        api_type: azure
+        api_version: 2023-07-01-preview
+        batch_size: '1'
+        connection:
+          id: /subscriptions/ba983cb6-9a3d-42c8-a042-e4b092c968a5/resourceGroups/ncsgpt-dev/providers/Microsoft.MachineLearningServices/workspaces/aas-ncsgpt-dev/connections/ai-aahncsgptdev418784981586_aoai
+        connection_type: workspace_connection
+        deployment: text-embedding-3-large-ncsgpt-dev
+        dimension: 3072
+        kind: open_ai
+        model: text-embedding-3-large
+        schema_version: '2'
+      index:
+        api_version: 2024-05-01-preview
+        connection:
+          id: /subscriptions/ba983cb6-9a3d-42c8-a042-e4b092c968a5/resourceGroups/ncsgpt-dev/providers/Microsoft.MachineLearningServices/workspaces/aas-ncsgpt-dev/connections/ssncsgptdev
+        connection_type: workspace_connection
+        endpoint: https://ss-ncsgpt-dev.search.windows.net/
+        engine: azure-sdk
+        field_mapping:
+          content: content
+          embedding: contentVector
+          metadata: null
+        index: ssncsgptdev-vector-index-text-embedding-3-large-1
+        kind: acs
+        semantic_configuration_name: azureml-default
+    queries: ${extractSearchIntent.output}
+    query_type: Hybrid (vector + keyword)
+    top_k: 10
+  use_variants: false
+- name: chunkDocuments
+  type: python
+  source:
+    type: code
+    path: chunkDocuments.py
+  inputs:
+    data_source: Azure AI Search
+    max_tokens: 20000
+    queries: ${extractSearchIntent.output}
+    query_type: Hybrid (vector + keyword)
+    results: ${querySearchResource.output}
+    top_k: 10
+  use_variants: false
+- name: selectChunks
+  type: python
+  source:
+    type: code
+    path: filterChunks.py
+  inputs:
+    min_score: 0.65
+    results: ${chunkDocuments.output}
+    top_k: 10
+  use_variants: false
+- name: formatGenerateReplyInputs
+  type: python
+  source:
+    type: code
+    path: formatReplyInputs.py
+  inputs:
+    chunks: ${selectChunks.output}
+    history: ${inputs.chat_history}
+    max_conversation_tokens: 90000
+    max_tokens: 100000
+    query: ${inputs.query}
+  use_variants: false
+- name: shouldGenerateReply
+  type: python
+  source:
+    type: code
+    path: shouldGenerateReply.py
+  inputs:
+    query: ${inputs.query}
+  use_variants: false
+- name: generateReply
+  type: llm
+  source:
+    type: code
+    path: ragcore/prompt_templates/generateReply.jinja2
+  inputs:
+    inputs: ${formatGenerateReplyInputs.output}
+    deployment_name: gpt-4o-ncsgpt-dev
+    temperature: 0.2
+    top_p: 0.95
+    max_tokens: 4096
+    presence_penalty: 0
+    frequency_penalty: 0
+    indomain: ${shouldGenerateReply.output}
+    role_info: >
+      You are NCSGPT, belonging to NCS Pte. Ltd. (also known as NCS Group,
+      previously known as National Computer Systems), a multinational
+      information technology company headquartered in Singapore. You are a
+      helpful chatbot for NCS employees, designed to provide comprehensive,
+      detailed, and actionable information. All criteria requested by users
+      should be fulfilled in your first response with thorough explanations.
+
+
+      Disambiguation of "NCS":
+
+      * Whenever the term "NCS" is used, it MUST be understood to refer to NCS Singapore (NCS Pte. Ltd.), unless explicitly stated otherwise in the user's prompt. If a user asks about "NCS" without specifying a location, assume they are referring to NCS Singapore. Clarify with the user if there is any ambiguity. For example, you can ask "Are you referring to NCS Singapore?".
+
+
+      For the information provided in documents within the knowledgebase other than the user guide, refer the citations to 'https://www.ncs.co/en-sg/' as all the information are retrieved from the website.
+
+
+      If you decided that the user's query is not related to the information provided, do not refer to 'https://www.ncs.co/en-sg/'.
+  provider: AzureOpenAI
+  connection: ai-aahncsgptdev418784981586_aoai
+  api: chat
+  module: promptflow.tools.aoai
+  use_variants: false
+- name: stream
+  type: python
+  source:
+    type: code
+    path: stream.py
+  inputs:
+    paragraph: ${generateReply.output}
+  use_variants: false
+node_variants: {}
+environment:
+  python_requirements_txt: requirements.txt
