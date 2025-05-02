@@ -19,61 +19,73 @@
     "rewriteIntent": {
       "x": 343.5,
       "y": 282,
+      "height": 75,
       "index": 1
     },
     "extractSearchIntent": {
       "x": 398.5,
       "y": 392,
+      "height": 75,
       "index": 2
     },
     "checkContent": {
       "x": 121.5,
       "y": 722,
+      "height": 75,
       "index": 3
     },
     "safeResponse": {
       "x": 12,
       "y": 942,
+      "height": 75,
       "index": 4
     },
     "querySearchResource": {
       "x": 343.5,
       "y": 502,
+      "height": 75,
       "index": 5
     },
     "chunkDocuments": {
       "x": 398.5,
       "y": 612,
+      "height": 75,
       "index": 6
     },
     "selectChunks": {
       "x": 398.5,
       "y": 722,
+      "height": 75,
       "index": 7
     },
     "formatGenerateReplyInputs": {
       "x": 233,
       "y": 832,
+      "height": 75,
       "index": 8
     },
     "shouldGenerateReply": {
       "x": 564.5,
       "y": 282,
+      "height": 75,
       "index": 9
     },
     "generateReply": {
       "x": 398.5,
       "y": 942,
+      "height": 75,
       "index": 10
     },
     "merge_responses": {
       "x": 121.5,
       "y": 1052,
+      "height": 75,
       "index": 11
     },
     "stream": {
       "x": 121.5,
       "y": 1162,
+      "height": 75,
       "index": 12
     }
   },
@@ -83,8 +95,8 @@
       0,
       0,
       0.36199601668266723,
-      6.918149940269785,
-      -151.1052328535332
+      45.91605948616822,
+      -160.6968487114806
     ]
   }
 }

@@ -1958,7 +1958,9 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "input_type": "default"
+          "input_type": "default",
+          "value": "${inputs.query}",
+          "id": "x06d9xlv"
         }
       },
       "source": "checkContent.py",
@@ -1980,7 +1982,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${checkContent.output}",
-          "id": "4lgzpvg1"
+          "id": "6ctyuw9d"
         }
       },
       "source": "safeResponse.py",
@@ -2083,7 +2085,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${checkContent.output}",
-          "id": "e6g7eqje"
+          "id": "0oekili6"
         },
         "generateReply_output": {
           "type": [
@@ -2093,7 +2095,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${generateReply.output}",
-          "id": "6fr8dub0"
+          "id": "d2vcutx7"
         },
         "safe_response": {
           "type": [
@@ -2103,7 +2105,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${safeResponse.output}",
-          "id": "o06l9qbn"
+          "id": "8bnnc3nt"
         }
       },
       "source": "merge_responses.py",
@@ -2125,7 +2127,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${rewriteIntent.output}",
-          "id": "v8k3ulyz"
+          "id": "so812j29"
         },
         "query": {
           "type": [
@@ -2133,7 +2135,9 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "input_type": "default"
+          "input_type": "default",
+          "value": "${inputs.query}",
+          "id": "9ndys0s6"
         }
       },
       "source": "extractSearchIntent.py",
@@ -2273,7 +2277,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${selectChunks.output}",
-          "id": "3rixevos"
+          "id": "3xc7qnno"
         },
         "content_check_result": {
           "type": [
@@ -2281,7 +2285,9 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "input_type": "default"
+          "input_type": "default",
+          "value": "${checkContent.output}",
+          "id": "isyuji49"
         },
         "history": {
           "type": [
@@ -2291,7 +2297,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${inputs.chat_history}",
-          "id": "9xigi66m"
+          "id": "u9fs58wt"
         },
         "max_conversation_tokens": {
           "type": [
@@ -2301,7 +2307,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "90000",
-          "id": "vdbe3d1q"
+          "id": "g6wj9s8q"
         },
         "max_tokens": {
           "type": [
@@ -2311,7 +2317,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "100000",
-          "id": "hx8q5cit"
+          "id": "grejrhcq"
         },
         "query": {
           "type": [
@@ -2321,7 +2327,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${inputs.query}",
-          "id": "t8qhkk2m"
+          "id": "h4f6uqzo"
         }
       },
       "source": "formatReplyInputs.py",
