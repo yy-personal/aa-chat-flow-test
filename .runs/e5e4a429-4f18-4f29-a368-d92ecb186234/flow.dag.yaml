@@ -40,7 +40,7 @@ nodes:
     frequency_penalty: 0
     conversation: ${formatRewriteIntentInputs.output}
   provider: AzureOpenAI
-  connection: ai-aahncsgptdev418784981586_aoai
+  connection: ai-aahncsgptdev30042025_aoai
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
@@ -77,12 +77,12 @@ nodes:
   inputs:
     mlindex_content: >
       embeddings:
-        api_base: https://ai-aahncsgptdev418784981586.openai.azure.com/
+        api_base: https://ai-aahncsgptdev30042025.openai.azure.com/
         api_type: azure
         api_version: 2023-07-01-preview
         batch_size: '1'
         connection:
-          id: /subscriptions/ba983cb6-9a3d-42c8-a042-e4b092c968a5/resourceGroups/ncsgpt-dev/providers/Microsoft.MachineLearningServices/workspaces/aas-ncsgpt-dev/connections/aiaahncsgptdev418784981586_aoai
+          id: /subscriptions/ba983cb6-9a3d-42c8-a042-e4b092c968a5/resourceGroups/ncsgpt-dev/providers/Microsoft.MachineLearningServices/workspaces/aas-ncsgpt-dev/connections/ai-aahncsgptdev30042025_aoai
         connection_type: workspace_connection
         deployment: text-embedding-3-large-ncsgpt-dev
         dimension: 3072
@@ -100,7 +100,7 @@ nodes:
           content: content
           embedding: contentVector
           metadata: meta_json_string
-        index: ssncsgptdev-vector-index-text-embedding-3-large-8
+        index: ssncsgptdev-vector-index-text-embedding-3-large-11
         kind: acs
         semantic_configuration_name: azureml-default
     queries: ${extractSearchIntent.output}
@@ -184,7 +184,7 @@ nodes:
 
       If you decided that the user's query is not related to the information provided, do not refer to 'https://www.ncs.co/en-sg/'.
   provider: AzureOpenAI
-  connection: ai-aahncsgptdev418784981586_aoai
+  connection: ai-aahncsgptdev30042025_aoai
   api: chat
   module: promptflow.tools.aoai
   use_variants: false

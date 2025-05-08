@@ -100,7 +100,7 @@ nodes:
           content: content
           embedding: contentVector
           metadata: meta_json_string
-        index: ssncsgptdev-vector-index-text-embedding-3-large-10
+        index: ssncsgptdev-vector-index-text-embedding-3-large-11
         kind: acs
         semantic_configuration_name: azureml-default
     queries: ${extractSearchIntent.output}
