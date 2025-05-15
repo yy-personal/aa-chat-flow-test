@@ -3,8 +3,8 @@ from promptflow import tool
 @tool
 def check_content(query: str) -> dict:
     # List of potentially problematic terms to filter
-    problematic_terms = ["retard", "offensive", "slur", "racist", "sexist"]
-    
+    problematic_terms = ["retard", "fuck", "fucker", "nigger", "nigga"]
+
     # Add geopolitical sensitive topics
     sensitive_topics = ["genocide", "gaza", "palestine", "israel", "war crime", 
                         "ethnic cleansing", "terrorism", "hamas", "hezbollah"]
