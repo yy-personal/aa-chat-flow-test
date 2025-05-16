@@ -1960,9 +1960,10 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${inputs.query}",
-          "id": "hz3iv0q1"
+          "id": "72m1av7d"
         }
       },
+      "description": "Enhanced content checking system with multi-tier classification and context awareness.\n\nArgs:\n    query: The user query to check\n    \nReturns:\n    Dict containing safety assessment and handling instructions",
       "source": "checkContent.py",
       "function": "check_content",
       "is_builtin": false,
@@ -2085,7 +2086,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${checkContent.output}",
-          "id": "0oekili6"
+          "id": "xvnpgv3y"
         },
         "generateReply_output": {
           "type": [
@@ -2095,7 +2096,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${generateReply.output}",
-          "id": "d2vcutx7"
+          "id": "pgu81430"
         },
         "safe_response": {
           "type": [
@@ -2105,9 +2106,10 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${safeResponse.output}",
-          "id": "8bnnc3nt"
+          "id": "8mkp4aca"
         }
       },
+      "description": "Intelligent response merging with fallback mechanisms and enhanced error handling.\n\nArgs:\n    safe_response: Response from safety module\n    generateReply_output: Output from LLM generation\n    content_check_result: Results from content check\n    \nReturns:\n    Final merged response",
       "source": "merge_responses.py",
       "function": "merge_responses",
       "is_builtin": false,
@@ -2127,7 +2129,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${rewriteIntent.output}",
-          "id": "so812j29"
+          "id": "pfgvkslh"
         },
         "query": {
           "type": [
@@ -2137,9 +2139,10 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${inputs.query}",
-          "id": "9ndys0s6"
+          "id": "ss1mpked"
         }
       },
+      "description": "Extract search intents from LLM output with robust error handling and fallbacks.\n\nArgs:\n    intent: The output from the rewriteIntent LLM tool\n    query: The original user query\n    \nReturns:\n    List of search intent strings",
       "source": "extractSearchIntent.py",
       "function": "extract_search_intent",
       "is_builtin": false,
@@ -2157,9 +2160,12 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "input_type": "default"
+          "input_type": "default",
+          "value": "${inputs.query}",
+          "id": "5tvcwme9"
         }
       },
+      "description": "Improved version of the citation mode classifier that maintains the original function signature.\n\nArgs:\n    query: The user query\n    \nReturns:\n    Boolean indicating whether to use citation mode",
       "source": "shouldGenerateReply.py",
       "function": "should_use_citation_mode",
       "is_builtin": false,
@@ -2179,7 +2185,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${merge_responses.output}",
-          "id": "kwjx5g3e"
+          "id": "961sf3zh"
         }
       },
       "source": "stream.py",
@@ -2199,7 +2205,17 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "value": "0.3"
+          "input_type": "default",
+          "value": "0.4",
+          "id": "o8fn8dq7"
+        },
+        "query": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "input_type": "default"
         },
         "results": {
           "type": [
@@ -2207,7 +2223,9 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "value": "${chunkDocuments.output}"
+          "input_type": "default",
+          "value": "${chunkDocuments.output}",
+          "id": "4eqe64k9"
         },
         "top_k": {
           "type": [
@@ -2215,12 +2233,17 @@
           ],
           "allow_manual_entry": false,
           "is_multi_select": false,
-          "value": "5"
+          "input_type": "default",
+          "value": "15",
+          "id": "ov51hltg"
         }
       },
+      "description": "Enhanced chunk selection with dynamic thresholding and query-aware filtering.\n\nArgs:\n    results: Chunks from the retrieval system\n    top_k: Maximum chunks to return\n    min_score: Minimum relevance score (can be dynamically adjusted)\n    query: Original user query for context-aware filtering\n    \nReturns:\n    List of selected chunks",
       "source": "filterChunks.py",
       "function": "select_chunks",
       "is_builtin": false,
+      "enable_kwargs": false,
+      "tool_state": "stable",
       "toolId": "filterChunks.py"
     },
     "formatConversationForIntentRewriting.py": {
