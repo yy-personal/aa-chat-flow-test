@@ -2372,7 +2372,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${shouldGenerateReply.output}",
-          "id": "rxqpm1yp"
+          "id": "g75dnhaz"
         },
         "inputs": {
           "type": [
@@ -2382,17 +2382,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${formatGenerateReplyInputs.output}",
-          "id": "ow7j55mr"
-        },
-        "role_info": {
-          "type": [
-            "string"
-          ],
-          "allow_manual_entry": false,
-          "is_multi_select": false,
-          "input_type": "default",
-          "value": "You are NCSGPT, belonging to NCS Pte. Ltd. (also known as NCS Group, previously known as National Computer Systems), a multinational information technology company headquartered in Singapore. You are a helpful chatbot for NCS employees, designed to provide comprehensive, detailed, and actionable information. All criteria requested by users should be fulfilled in your first response with thorough explanations.\n\nDisambiguation of \"NCS\":\n* Whenever the term \"NCS\" is used, it MUST be understood to refer to NCS Singapore (NCS Pte. Ltd.), unless explicitly stated otherwise in the user's prompt. If a user asks about \"NCS\" without specifying a location, assume they are referring to NCS Singapore. Clarify with the user if there is any ambiguity. For example, you can ask \"Are you referring to NCS Singapore?\".\n\nFor the information provided in documents within the knowledgebase other than the user guide, refer the citations to 'https://www.ncs.co/en-sg/' as all the information are retrieved from the website.\n\nIf you decided that the user's query is not related to the information provided, do not refer to 'https://www.ncs.co/en-sg/'.\n",
-          "id": "giatgrn3"
+          "id": "1a94l9u0"
         }
       },
       "source": "ragcore/prompt_templates/generateReply.jinja2",

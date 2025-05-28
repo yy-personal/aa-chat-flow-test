@@ -14,13 +14,11 @@
     "formatRewriteIntentInputs": {
       "x": 123,
       "y": 172,
-      "height": 75,
       "index": 0
     },
     "rewriteIntent": {
       "x": 123,
       "y": 282,
-      "height": 75,
       "index": 1
     },
     "extractSearchIntent": {
@@ -31,13 +29,11 @@
     "checkContent": {
       "x": 344,
       "y": 722,
-      "height": 75,
       "index": 3
     },
     "safeResponse": {
       "x": 194.5,
       "y": 942,
-      "height": 75,
       "index": 4
     },
     "querySearchResource": {
@@ -53,37 +49,31 @@
     "selectChunks": {
       "x": 12,
       "y": 722,
-      "height": 75,
       "index": 7
     },
     "formatGenerateReplyInputs": {
       "x": 233,
       "y": 832,
-      "height": 75,
       "index": 8
     },
     "shouldGenerateReply": {
       "x": 694,
       "y": 282,
-      "height": 75,
       "index": 9
     },
     "generateReply": {
       "x": 544.5,
       "y": 942,
-      "height": 75,
       "index": 10
     },
     "merge_responses": {
       "x": 599.5,
       "y": 1052,
-      "height": 75,
       "index": 11
     },
     "stream": {
       "x": 599.5,
       "y": 1162,
-      "height": 75,
       "index": 12
     }
   },
@@ -94,7 +84,7 @@
       0,
       0.36199601668266723,
       -66.29617441294633,
-      -318.9084304024401
+      -347.0501481321392
     ]
   }
 }
