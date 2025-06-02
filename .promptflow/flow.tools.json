@@ -2372,7 +2372,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${shouldGenerateReply.output}",
-          "id": "g75dnhaz"
+          "id": "2mwjwis5"
         },
         "inputs": {
           "type": [
@@ -2382,7 +2382,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${formatGenerateReplyInputs.output}",
-          "id": "1a94l9u0"
+          "id": "ells28by"
         }
       },
       "source": "ragcore/prompt_templates/generateReply.jinja2",

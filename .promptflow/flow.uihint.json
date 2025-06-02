@@ -75,11 +75,23 @@
     "querySearchResource": {
       "variant_0": {
         "inputs": {
+          "acs_index_name": [
+            {
+              "display_value": "ssncsgptprod-vector-index-text-embedding-3-large-16",
+              "value": "ssncsgptprod-vector-index-text-embedding-3-large-16"
+            }
+          ],
           "cosmosdb_nosql_connection": [],
           "cosmosdb_nosql_container_name": [],
           "cosmosdb_nosql_content_field": [],
           "cosmosdb_nosql_database_name": [],
           "cosmosdb_nosql_embedding_field": [],
+          "embedding_deployment": [
+            {
+              "display_value": "text-embedding-3-large-ncsgpt-prod",
+              "value": "text-embedding-3-large-ncsgpt-prod"
+            }
+          ],
           "embedding_model": [],
           "serverless_embedding_connection": [],
           "es_content_field": [],
@@ -121,14 +133,14 @@
         },
         "inputsValue": {
           "index_type": "Azure AI Search",
-          "acs_index_connection": "ssncsgptdev",
+          "acs_index_connection": "ssncsgptprod",
           "acs_content_field": "content",
           "acs_embedding_field": "contentVector",
-          "acs_index_name": "ssncsgptdev-vector-index-text-embedding-3-large-13",
+          "acs_index_name": "ssncsgptprod-vector-index-text-embedding-3-large-16",
           "acs_metadata_field": "meta_json_string",
           "embedding_type": "Azure OpenAI",
-          "aoai_embedding_connection": "ai-aahncsgptdev30042025_aoai",
-          "embedding_deployment": "text-embedding-3-large-ncsgpt-dev",
+          "aoai_embedding_connection": "ai-aahncsgptprod970548739742_aoai",
+          "embedding_deployment": "text-embedding-3-large-ncsgpt-prod",
           "semantic_configuration": "azureml-default"
         }
       }
