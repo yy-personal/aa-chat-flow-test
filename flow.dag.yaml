@@ -32,7 +32,7 @@ nodes:
     type: code
     path: ragcore/prompt_templates/rewriteIntent.jinja2
   inputs:
-    deployment_name: gpt-4o-mini-ncsgpt-prod
+    deployment_name: gpt-4o-mini-ncsgpt-dev
     temperature: 0.2
     top_p: 0.8
     max_tokens: 4096
@@ -40,7 +40,7 @@ nodes:
     frequency_penalty: 0
     conversation: ${formatRewriteIntentInputs.output}
   provider: AzureOpenAI
-  connection: ai-aahncsgptprod970548739742_aoai
+  connection: ai-aahncsgptdev30042025_aoai
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
@@ -77,14 +77,14 @@ nodes:
   inputs:
     mlindex_content: >
       embeddings:
-        api_base: https://ai-aahncsgptprod970548739742.openai.azure.com/
+        api_base: https://ai-aahncsgptdev30042025.openai.azure.com/
         api_type: azure
         api_version: 2023-07-01-preview
         batch_size: '1'
         connection:
-          id: /subscriptions/7ead1673-f4e7-4808-9bb8-902e34b2a4ce/resourceGroups/rg-ncsgpt-prod/providers/Microsoft.MachineLearningServices/workspaces/aap-ncsgpt-prod/connections/ai-aahncsgptprod970548739742_aoai
+          id: /subscriptions/ba983cb6-9a3d-42c8-a042-e4b092c968a5/resourceGroups/ncsgpt-dev/providers/Microsoft.MachineLearningServices/workspaces/aas-ncsgpt-dev/connections/ai-aahncsgptdev30042025_aoai
         connection_type: workspace_connection
-        deployment: text-embedding-3-large-ncsgpt-prod
+        deployment: text-embedding-3-large-ncsgpt-dev
         dimension: 3072
         kind: open_ai
         model: text-embedding-3-large
@@ -92,15 +92,15 @@ nodes:
       index:
         api_version: 2024-05-01-preview
         connection:
-          id: /subscriptions/7ead1673-f4e7-4808-9bb8-902e34b2a4ce/resourceGroups/rg-ncsgpt-prod/providers/Microsoft.MachineLearningServices/workspaces/aap-ncsgpt-prod/connections/ssncsgptprod
+          id: /subscriptions/ba983cb6-9a3d-42c8-a042-e4b092c968a5/resourceGroups/ncsgpt-dev/providers/Microsoft.MachineLearningServices/workspaces/aas-ncsgpt-dev/connections/ssncsgptdev
         connection_type: workspace_connection
-        endpoint: https://ss-ncsgpt-prod.search.windows.net/
+        endpoint: https://ss-ncsgpt-dev.search.windows.net/
         engine: azure-sdk
         field_mapping:
           content: content
           embedding: contentVector
           metadata: meta_json_string
-        index: ssncsgptprod-vector-index-text-embedding-3-large-16
+        index: ssncsgptdev-vector-index-text-embedding-3-large-15
         kind: acs
         semantic_configuration_name: azureml-default
     queries: ${extractSearchIntent.output}
@@ -159,7 +159,7 @@ nodes:
     path: ragcore/prompt_templates/generateReply.jinja2
   inputs:
     inputs: ${formatGenerateReplyInputs.output}
-    deployment_name: gpt-4.1-ncsgpt-prod
+    deployment_name: gpt-4.1-ncsgpt-dev
     temperature: 0.2
     top_p: 0.95
     max_tokens: 4096
@@ -167,7 +167,7 @@ nodes:
     frequency_penalty: 0
     indomain: ${shouldGenerateReply.output}
   provider: AzureOpenAI
-  connection: ai-aahncsgptprod970548739742_aoai
+  connection: ai-aahncsgptdev30042025_aoai
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
