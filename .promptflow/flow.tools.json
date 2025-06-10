@@ -1948,51 +1948,6 @@
     }
   },
   "code": {
-    "checkContent.py": {
-      "name": "checkContent.py",
-      "type": "python",
-      "inputs": {
-        "query": {
-          "type": [
-            "string"
-          ],
-          "allow_manual_entry": false,
-          "is_multi_select": false,
-          "input_type": "default",
-          "value": "${inputs.query}",
-          "id": "72m1av7d"
-        }
-      },
-      "description": "Enhanced content checking system with multi-tier classification and context awareness.\n\nArgs:\n    query: The user query to check\n    \nReturns:\n    Dict containing safety assessment and handling instructions",
-      "source": "checkContent.py",
-      "function": "check_content",
-      "is_builtin": false,
-      "enable_kwargs": false,
-      "tool_state": "stable",
-      "toolId": "checkContent.py"
-    },
-    "safeResponse.py": {
-      "name": "safeResponse.py",
-      "type": "python",
-      "inputs": {
-        "content_check_result": {
-          "type": [
-            "object"
-          ],
-          "allow_manual_entry": false,
-          "is_multi_select": false,
-          "input_type": "default",
-          "value": "${checkContent.output}",
-          "id": "6ctyuw9d"
-        }
-      },
-      "source": "safeResponse.py",
-      "function": "safe_response",
-      "is_builtin": false,
-      "enable_kwargs": false,
-      "tool_state": "stable",
-      "toolId": "safeResponse.py"
-    },
     "ragcore/prompt_templates/rewriteIntent.jinja2": {
       "name": "ragcore/prompt_templates/rewriteIntent.jinja2",
       "type": "prompt",
@@ -2074,49 +2029,6 @@
       "tool_state": "stable",
       "toolId": "chunkDocuments.py"
     },
-    "merge_responses.py": {
-      "name": "merge_responses.py",
-      "type": "python",
-      "inputs": {
-        "content_check_result": {
-          "type": [
-            "object"
-          ],
-          "allow_manual_entry": false,
-          "is_multi_select": false,
-          "input_type": "default",
-          "value": "${checkContent.output}",
-          "id": "xvnpgv3y"
-        },
-        "generateReply_output": {
-          "type": [
-            "string"
-          ],
-          "allow_manual_entry": false,
-          "is_multi_select": false,
-          "input_type": "default",
-          "value": "${generateReply.output}",
-          "id": "pgu81430"
-        },
-        "safe_response": {
-          "type": [
-            "string"
-          ],
-          "allow_manual_entry": false,
-          "is_multi_select": false,
-          "input_type": "default",
-          "value": "${safeResponse.output}",
-          "id": "8mkp4aca"
-        }
-      },
-      "description": "Intelligent response merging with fallback mechanisms and enhanced error handling.\n\nArgs:\n    safe_response: Response from safety module\n    generateReply_output: Output from LLM generation\n    content_check_result: Results from content check\n    \nReturns:\n    Final merged response",
-      "source": "merge_responses.py",
-      "function": "merge_responses",
-      "is_builtin": false,
-      "enable_kwargs": false,
-      "tool_state": "stable",
-      "toolId": "merge_responses.py"
-    },
     "extractSearchIntent.py": {
       "name": "extractSearchIntent.py",
       "type": "python",
@@ -2129,7 +2041,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${rewriteIntent.output}",
-          "id": "pfgvkslh"
+          "id": "u1jbxej1"
         },
         "query": {
           "type": [
@@ -2139,10 +2051,10 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${inputs.query}",
-          "id": "ss1mpked"
+          "id": "dlydu45i"
         }
       },
-      "description": "Extract search intents from LLM output with robust error handling and fallbacks.\n\nArgs:\n    intent: The output from the rewriteIntent LLM tool\n    query: The original user query\n    \nReturns:\n    List of search intent strings",
+      "description": "Extract search intents from LLM output with robust error handling and fallbacks.",
       "source": "extractSearchIntent.py",
       "function": "extract_search_intent",
       "is_builtin": false,
@@ -2300,17 +2212,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${selectChunks.output}",
-          "id": "3xc7qnno"
-        },
-        "content_check_result": {
-          "type": [
-            "object"
-          ],
-          "allow_manual_entry": false,
-          "is_multi_select": false,
-          "input_type": "default",
-          "value": "${checkContent.output}",
-          "id": "isyuji49"
+          "id": "hhjvkzun"
         },
         "history": {
           "type": [
@@ -2320,7 +2222,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${inputs.chat_history}",
-          "id": "u9fs58wt"
+          "id": "w0hvp086"
         },
         "max_conversation_tokens": {
           "type": [
@@ -2330,7 +2232,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "90000",
-          "id": "g6wj9s8q"
+          "id": "6psw4p9y"
         },
         "max_tokens": {
           "type": [
@@ -2340,7 +2242,7 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "100000",
-          "id": "grejrhcq"
+          "id": "fm28zcc7"
         },
         "query": {
           "type": [
@@ -2350,9 +2252,10 @@
           "is_multi_select": false,
           "input_type": "default",
           "value": "${inputs.query}",
-          "id": "h4f6uqzo"
+          "id": "odqv3utc"
         }
       },
+      "description": "Format inputs for reply generation without content moderation.",
       "source": "formatReplyInputs.py",
       "function": "format_generate_reply_inputs",
       "is_builtin": false,

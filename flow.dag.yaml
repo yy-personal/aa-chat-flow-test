@@ -53,22 +53,6 @@ nodes:
     intent: ${rewriteIntent.output}
     query: ${inputs.query}
   use_variants: false
-- name: checkContent
-  type: python
-  source:
-    type: code
-    path: checkContent.py
-  inputs:
-    query: ${inputs.query}
-  use_variants: false
-- name: safeResponse
-  type: python
-  source:
-    type: code
-    path: safeResponse.py
-  inputs:
-    content_check_result: ${checkContent.output}
-  use_variants: false
 - name: querySearchResource
   type: python
   source:
@@ -138,7 +122,6 @@ nodes:
     path: formatReplyInputs.py
   inputs:
     chunks: ${selectChunks.output}
-    content_check_result: ${checkContent.output}
     history: ${inputs.chat_history}
     max_conversation_tokens: 90000
     max_tokens: 100000
@@ -171,23 +154,13 @@ nodes:
   api: chat
   module: promptflow.tools.aoai
   use_variants: false
-- name: merge_responses
-  type: python
-  source:
-    type: code
-    path: merge_responses.py
-  inputs:
-    content_check_result: ${checkContent.output}
-    generateReply_output: ${generateReply.output}
-    safe_response: ${safeResponse.output}
-  use_variants: false
 - name: stream
   type: python
   source:
     type: code
     path: stream.py
   inputs:
-    paragraph: ${merge_responses.output}
+    paragraph: ${generateReply.output}
   use_variants: false
 node_variants: {}
 environment:

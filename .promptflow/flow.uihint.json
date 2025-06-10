@@ -36,25 +36,7 @@
         "inputsValue": {}
       }
     },
-    "merge_responses": {
-      "variant_0": {
-        "inputs": {},
-        "inputsValue": {}
-      }
-    },
     "chunkDocuments": {
-      "variant_0": {
-        "inputs": {},
-        "inputsValue": {}
-      }
-    },
-    "safeResponse": {
-      "variant_0": {
-        "inputs": {},
-        "inputsValue": {}
-      }
-    },
-    "checkContent": {
       "variant_0": {
         "inputs": {},
         "inputsValue": {}

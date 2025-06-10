@@ -6,15 +6,8 @@ import re
 
 @tool
 def extract_search_intent(intent, query: str = "") -> List:
-    """Extract search intents from LLM output with robust error handling and fallbacks.
+    """Extract search intents from LLM output with robust error handling and fallbacks."""
     
-    Args:
-        intent: The output from the rewriteIntent LLM tool
-        query: The original user query
-        
-    Returns:
-        List of search intent strings
-    """
     # Setup basic logging
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger("extract_search_intent")
@@ -43,13 +36,7 @@ def extract_search_intent(intent, query: str = "") -> List:
     
     except Exception as e:
         logger.error(f"Error in extract_search_intent: {str(e)}")
-        
-        # For sensitive topic queries, return an empty list to trigger appropriate downstream handling
-        if is_sensitive_topic(query):
-            logger.info(f"Sensitive topic detected in query: {query}")
-            return []
-        
-        # General fallback for other errors
+        # General fallback for errors
         return create_fallback_intents(query)
 
 def create_fallback_intents(query: str) -> List[str]:
@@ -107,14 +94,3 @@ def validate_and_improve_intents(intent_list: List[str], query: str) -> List[str
         return [query]
     
     return intent_list
-
-def is_sensitive_topic(query: str) -> bool:
-    """Check if query contains sensitive topics that should be handled specially."""
-    if not query:
-        return False
-        
-    sensitive_keywords = ["genocide", "gaza", "israel", "palestine", "war crime", 
-                          "terrorism", "terrorist", "suicide bomb", "ethnic cleansing"]
-    
-    query_lower = query.lower()
-    return any(keyword in query_lower for keyword in sensitive_keywords)
